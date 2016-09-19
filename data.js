@@ -2,7 +2,7 @@
 function BasicData() {
 
     // косинус гиперболический
-    function cosh(x) {
+    this.cosh = function (x) {
         return (Math.exp(x) + Math.exp(-x)) / 2;
     }
 
@@ -40,5 +40,5 @@ function BasicData() {
 
 // заданная функция, для которой необходимо найти приближение
 BasicData.prototype.f = function(x) {
-    return Math.exp(x / 2) + 3.5 * cosh(x / 2);
+    return Math.exp(x / 2) + 3.5 * this.cosh(x / 2);
 }
