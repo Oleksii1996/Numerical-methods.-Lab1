@@ -1,16 +1,11 @@
 // класс, описывающий заданные данные
-function BasicData() {
-
-    // косинус гиперболический
-    this.cosh = function (x) {
-        return (Math.exp(x) + Math.exp(-x)) / 2;
-    }
+function BasicData(a, b, n) {
 
     // отрезок, на котором необходимо найти приближение
-    this.a = 1.1, this.b = 5;
+    this.a = a, this.b = b;
 
     // количество отрезков, на которое будет разбито [a, b]
-    this.n = 7;
+    this.n = n;
 
     // длинна каждого отрезка
     this.h = (this.b - this.a) / this.n;
@@ -27,8 +22,8 @@ function BasicData() {
     this.points[0][1] = this.f(this.a);
 
     this.points[this.n] = [];
-    this.points[this.n][0] = this.a;
-    this.points[this.n][1] = this.f(this.a);
+    this.points[this.n][0] = this.b;
+    this.points[this.n][1] = this.f(this.b);
 
     for (var i = 1; i < this.n; i++) {
         tmpX += this.h;
@@ -41,4 +36,9 @@ function BasicData() {
 // заданная функция, для которой необходимо найти приближение
 BasicData.prototype.f = function(x) {
     return Math.exp(x / 2) + 3.5 * this.cosh(x / 2);
+}
+
+// косинус гиперболический
+BasicData.prototype.cosh = function (x) {
+    return (Math.exp(x) + Math.exp(-x)) / 2;
 }

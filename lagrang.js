@@ -1,5 +1,5 @@
 // класс, для построения интерполяционнго многочлена в форме Лагранжа
-function LagrPoly() {
+function LagrPoly(a, b, n) {
 
     // задаем наследование
     BasicData.apply(this, arguments);
@@ -8,17 +8,18 @@ function LagrPoly() {
 // задаем наследование
 LagrPoly.prototype = Object.create(BasicData.prototype);
 
-// построение многочлена Лагранжа и вычисление его значения в хаданной точке
+// построение многочлена Лагранжа и вычисление его значения в заданной точке
 LagrPoly.prototype.getLagrPoly = function(x) {
-    var tmp = 1, result = 0;
+    var tmp, result = 0;
 
-    for (var i = 0; i < this.n; i++) {
-        for (var j = 0; j < this.n; j++) {
+    for (var i = 0, len = this.n; i < len; i++) {
+        tmp = 1;
+        for (var j = 0; j < len; j++) {
             if (i != j) {
                 tmp *= (x - this.points[j][0]) / (this.points[i][0] - this.points[j][0]);
             }
         }
-        result += this.points[i][1]*tmp;
+        result += this.points[i][1] * tmp;
     }
 
     return result;
