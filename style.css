@@ -2,7 +2,7 @@ body {
     background-color: whitesmoke;
 }
 
-section {
+.mainForm {
     margin-top: 1%;
     margin-left: 15%;
     margin-right: 15%;
@@ -12,6 +12,31 @@ section {
     text-align: center;
     border-radius: 5px;
 }
+
+.leftForm {
+    display: inline-block;
+    float: left;
+    width: 48.5%;
+    margin-top: 1%;
+    background-color: white;
+    border: 0.5px solid lightgrey;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.rightForm {
+    display: inline-block;
+    float: right;
+    width: 48.5%;
+    margin-top: 1%;
+    background-color: white;
+    border: 0.5px solid lightgrey;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
 
 button {
     border: 1px solid black;
