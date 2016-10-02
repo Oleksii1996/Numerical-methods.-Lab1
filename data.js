@@ -10,8 +10,8 @@ function BasicData(a, b, n) {
     // длинна каждого отрезка
     this.h = (this.b - this.a) / this.n;
 
-    // узлы интерполирования
-    this.points = [];
+    // points - узлы интерполирования, x - точки для построения графиков
+    this.points = [], this.x = [];
 
 
     // подсчет узлов интерполирования, tmpX - хранит абсциссу каждой подсчитываемой точки
@@ -30,6 +30,10 @@ function BasicData(a, b, n) {
         this.points[i] = [];
         this.points[i][0] = tmpX;
         this.points[i][1] = this.f(tmpX);
+    }
+
+    for (var i = 0; i <= this.n+1; i++) {
+        this.x.push(this.a + ((2*i - 1) / 2) * this.h);
     }
 }
 
