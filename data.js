@@ -32,7 +32,7 @@ function BasicData(a, b, n) {
         this.points[i][1] = this.f(tmpX);
     }
 
-    for (var i = 0; i <= this.n+1; i++) {
+    for (i = 0; i <= this.n+1; i++) {
         this.x.push(this.a + ((2*i - 1) / 2) * this.h);
     }
 }

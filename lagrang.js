@@ -24,3 +24,37 @@ LagrPoly.prototype.getLagrPoly = function(x) {
 
     return result;
 }
+
+// заполняем таблицу
+LagrPoly.prototype.fillTable = function(table) {
+    table.innerHTML = "<th colspan='4'>Интерполяционный многочлен Лагранжа</th>";
+    var tr = document.createElement("tr");
+    tr.innerHTML = "<td>Узлы интерполирования</td><td>f(x)</td><td>L(x)</td><td>R(x)</td>";
+    table.appendChild(tr);
+
+    for (var i = 0, len = this.points.length; i < len; i++) {
+        tr = document.createElement("tr");
+
+        tr.innerHTML = "<td>" + this.points[i][0].toFixed(6).toString() + "</td>" +
+            "<td>" + this.f(this.points[i][0]).toFixed(6).toString() + "</td>" +
+            "<td>" + this.getLagrPoly(this.points[i][0]).toFixed(6).toString() + "</td>" +
+            "<td>" + (this.f(this.points[i][0]) - this.getLagrPoly(this.points[i][0])).toFixed(6).toString() + "</td>";
+
+        table.appendChild(tr);
+    }
+
+    tr = document.createElement("tr");
+    tr.innerHTML = "<td>X<sub>j</sub></td><td>f(x)</td><td>L(x)</td><td>R(x)</td>";
+    table.appendChild(tr);
+
+    for (var i = 0, len = this.x.length; i < len; i++) {
+        tr = document.createElement("tr");
+
+        tr.innerHTML = "<td>" + this.x[i].toFixed(6).toString() + "</td>" +
+            "<td>" + this.f(this.x[i]).toFixed(6).toString() + "</td>" +
+            "<td>" + this.getLagrPoly(this.x[i]).toFixed(6).toString() + "</td>" +
+            "<td>" + (this.f(this.x[i]) - this.getLagrPoly(this.x[i])).toFixed(6).toString() + "</td>";
+
+        table.appendChild(tr);
+    }
+}

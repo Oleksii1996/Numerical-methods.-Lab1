@@ -8,9 +8,10 @@
         google.charts.setOnLoadCallback(drawC);
 
         var arr = [];
-        for (var i = 0, len = this.x.length; i < len; i++) {
-            arr.push([this.x[i], this.getLagrPoly(this.x[i])]);
+        for (var i = 0, len = lagr.x.length; i < len; i++) {
+            arr.push([lagr.x[i], lagr.f(lagr.x[i]), lagr.getLagrPoly(lagr.x[i]), newton.getNewtonPoly(newton.x[i])]);
         }
+        //arr.push([10, lagr.f(10), lagr.getLagrPoly(10), newton.getNewtonPoly(10)]);
 
         function drawC() {
             var data = new google.visualization.DataTable();
@@ -25,7 +26,7 @@
             var options = {
                 title: "",
                 legend: "none",
-                width: "95%",
+                width: "100%",
                 height: 400
             }
 
@@ -34,5 +35,9 @@
         }
     }
 
-    drawChart(document.getElementById("forChart"));
+    document.getElementById("startBtn").addEventListener("click", function() {
+        drawChart(lagr, newton, document.getElementById("forChart"));
+        lagr.fillTable(document.getElementById("lagrTable"));
+    });
+
 })();
