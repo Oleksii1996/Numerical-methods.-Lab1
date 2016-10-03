@@ -5,8 +5,9 @@ function LagrPoly(a, b, n) {
     BasicData.apply(this, arguments);
 }
 
-// задаем наследование
+// задаем наследование и сохраняем конструктор
 LagrPoly.prototype = Object.create(BasicData.prototype);
+LagrPoly.prototype.constructor = LagrPoly;
 
 // построение многочлена Лагранжа и вычисление его значения в заданной точке
 LagrPoly.prototype.getLagrPoly = function(x) {
@@ -35,10 +36,10 @@ LagrPoly.prototype.fillTable = function(table) {
     for (var i = 0, len = this.points.length; i < len; i++) {
         tr = document.createElement("tr");
 
-        tr.innerHTML = "<td>" + this.points[i][0].toFixed(6).toString() + "</td>" +
-            "<td>" + this.f(this.points[i][0]).toFixed(6).toString() + "</td>" +
-            "<td>" + this.getLagrPoly(this.points[i][0]).toFixed(6).toString() + "</td>" +
-            "<td>" + (this.f(this.points[i][0]) - this.getLagrPoly(this.points[i][0])).toFixed(6).toString() + "</td>";
+        tr.innerHTML = "<td>" + this.points[i][0].toFixed(6) + "</td>" +
+            "<td>" + this.f(this.points[i][0]).toFixed(6) + "</td>" +
+            "<td>" + this.getLagrPoly(this.points[i][0]).toFixed(6) + "</td>" +
+            "<td>" + (this.f(this.points[i][0]) - this.getLagrPoly(this.points[i][0])).toFixed(6) + "</td>";
 
         table.appendChild(tr);
     }
@@ -50,10 +51,10 @@ LagrPoly.prototype.fillTable = function(table) {
     for (var i = 0, len = this.x.length; i < len; i++) {
         tr = document.createElement("tr");
 
-        tr.innerHTML = "<td>" + this.x[i].toFixed(6).toString() + "</td>" +
-            "<td>" + this.f(this.x[i]).toFixed(6).toString() + "</td>" +
-            "<td>" + this.getLagrPoly(this.x[i]).toFixed(6).toString() + "</td>" +
-            "<td>" + (this.f(this.x[i]) - this.getLagrPoly(this.x[i])).toFixed(6).toString() + "</td>";
+        tr.innerHTML = "<td>" + this.x[i].toFixed(6) + "</td>" +
+            "<td>" + this.f(this.x[i]).toFixed(6) + "</td>" +
+            "<td>" + this.getLagrPoly(this.x[i]).toFixed(6) + "</td>" +
+            "<td>" + (this.f(this.x[i]) - this.getLagrPoly(this.x[i])).toFixed(6) + "</td>";
 
         table.appendChild(tr);
     }

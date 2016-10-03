@@ -13,7 +13,8 @@ body {
     border-radius: 5px;
 }
 
-.leftForm {
+#leftForm {
+    visibility: hidden;
     display: inline-block;
     float: left;
     width: 48.5%;
@@ -25,7 +26,8 @@ body {
     border-radius: 5px;
 }
 
-.rightForm {
+#rightForm {
+    visibility: hidden;
     display: inline-block;
     float: right;
     width: 48.5%;

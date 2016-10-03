@@ -24,8 +24,12 @@
             data.addRows(arr);
 
             var options = {
-                title: "",
-                legend: "none",
+                title: "Графики",
+                legend: {
+                    0: "f(x)",
+                    1: "Полином Лагранжа",
+                    2: "Полином Ньютона"
+                },
                 width: "100%",
                 height: 400
             }
@@ -35,9 +39,15 @@
         }
     }
 
-    document.getElementById("startBtn").addEventListener("click", function() {
-        drawChart(lagr, newton, document.getElementById("forChart"));
+    document.getElementById("buildTableBtn").addEventListener("click", function() {
+        document.getElementById("leftForm").style.visibility = "visible";
         lagr.fillTable(document.getElementById("lagrTable"));
+        newton.fillTable(document.getElementById("newtonTable"));
+    });
+
+    document.getElementById("drawChartBtn").addEventListener("click", function() {
+        document.getElementById("rightForm").style.visibility = "visible";
+        drawChart(lagr, newton, document.getElementById("forChart"));
     });
 
 })();

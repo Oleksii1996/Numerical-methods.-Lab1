@@ -5,6 +5,7 @@ function NewtonPoly(a, b, n) {
 }
 
 NewtonPoly.prototype = Object.create(BasicData.prototype);
+NewtonPoly.prototype.constructor = NewtonPoly;
 
 // прямая интерполяционная формула Ньютона
 NewtonPoly.prototype.getNewtonPoly = function(x) {
@@ -32,4 +33,38 @@ NewtonPoly.prototype.getNewtonPoly = function(x) {
         result+=tmp;
     }
     return result;
+}
+
+// заполняем таблицу
+NewtonPoly.prototype.fillTable = function(table) {
+    table.innerHTML = "<th colspan='4'>Интерполяционный многочлен Ньютона</th>";
+    var tr = document.createElement("tr");
+    tr.innerHTML = "<td>Узлы интерполирования</td><td>f(x)</td><td>L(x)</td><td>R(x)</td>";
+    table.appendChild(tr);
+
+    for (var i = 0, len = this.points.length; i < len; i++) {
+        tr = document.createElement("tr");
+
+        tr.innerHTML = "<td>" + this.points[i][0].toFixed(6) + "</td>" +
+            "<td>" + this.f(this.points[i][0]).toFixed(6) + "</td>" +
+            "<td>" + this.getNewtonPoly(this.points[i][0]).toFixed(6) + "</td>" +
+            "<td>" + (this.f(this.points[i][0]) - this.getNewtonPoly(this.points[i][0])).toFixed(6) + "</td>";
+
+        table.appendChild(tr);
+    }
+
+    tr = document.createElement("tr");
+    tr.innerHTML = "<td>X<sub>j</sub></td><td>f(x)</td><td>L(x)</td><td>R(x)</td>";
+    table.appendChild(tr);
+
+    for (var i = 0, len = this.x.length; i < len; i++) {
+        tr = document.createElement("tr");
+
+        tr.innerHTML = "<td>" + this.x[i].toFixed(6) + "</td>" +
+            "<td>" + this.f(this.x[i]).toFixed(6) + "</td>" +
+            "<td>" + this.getNewtonPoly(this.x[i]).toFixed(6) + "</td>" +
+            "<td>" + (this.f(this.x[i]) - this.getNewtonPoly(this.x[i])).toFixed(6) + "</td>";
+
+        table.appendChild(tr);
+    }
 }
