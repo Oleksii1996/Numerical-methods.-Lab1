@@ -2,41 +2,115 @@ body {
     background-color: whitesmoke;
 }
 
-.mainForm {
-    margin-top: 1%;
-    margin-left: 15%;
-    margin-right: 15%;
-    background-color: white;
-    border: 0.5px solid lightgrey;
-    padding: 5px;
-    text-align: center;
-    border-radius: 5px;
+@media screen and (max-width: 450px) {
+    .mainForm {
+        margin-top: 1%;
+        width: 100%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #leftForm {
+        visibility: hidden;
+        width: 100%;
+        margin-top: 1%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #rightForm {
+        visibility: hidden;
+        width: 100%;
+        margin-top: 1%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
 }
 
-#leftForm {
-    visibility: hidden;
-    display: inline-block;
-    float: left;
-    width: 48.5%;
-    margin-top: 1%;
-    background-color: white;
-    border: 0.5px solid lightgrey;
-    padding: 5px;
-    text-align: center;
-    border-radius: 5px;
+@media screen and (min-width: 451px) and (max-width: 800px) {
+    .mainForm {
+        margin-top: 1%;
+        width: 100%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #leftForm {
+        visibility: hidden;
+        display: inline-block;
+        float: left;
+        max-width: 48.5%;
+        margin-top: 1%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #rightForm {
+        visibility: hidden;
+        display: inline-block;
+        float: right;
+        max-width: 48.5%;
+        margin-top: 1%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
 }
 
-#rightForm {
-    visibility: hidden;
-    display: inline-block;
-    float: right;
-    width: 48.5%;
-    margin-top: 1%;
-    background-color: white;
-    border: 0.5px solid lightgrey;
-    padding: 5px;
-    text-align: center;
-    border-radius: 5px;
+@media screen and (min-width: 801px) {
+    .mainForm {
+        margin-top: 1%;
+        margin-left: 15%;
+        margin-right: 15%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #leftForm {
+        visibility: hidden;
+        display: inline-block;
+        float: left;
+        width: 48.5%;
+        margin-top: 1%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+    #rightForm {
+        visibility: hidden;
+        display: inline-block;
+        float: right;
+        width: 48.5%;
+        margin-top: 1%;
+        background-color: white;
+        border: 0.5px solid lightgrey;
+        padding: 5px;
+        text-align: center;
+        border-radius: 5px;
+    }
 }
 
 
@@ -56,5 +130,4 @@ table, tr, td, th {
     border: 1px solid black;
     border-collapse: collapse;
     padding: 5px;
-    width: 100%;
 }
