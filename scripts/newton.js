@@ -9,28 +9,28 @@ NewtonPoly.prototype.constructor = NewtonPoly;
 
 // прямая интерполяционная формула Ньютона
 NewtonPoly.prototype.getNewtonPoly = function(x) {
-    var result = this.points[0][1], tmp, den;
+    var result = this.points[0].y, tmp, den;
     var i, j, k;
-    for(i=1; i < this.n; i++){
-        tmp=0;
+    for(i = 1; i < this.n; i++){
+        tmp = 0;
         //следующее слагаемое полинома
-        for(j=0; j <= i; j++){
-            den=1;
+        for(j = 0; j <= i; j++){
+            den = 1;
             //считаем знаменатель разделенной разности
-            for(k=0; k <= i; k++){
+            for(k = 0; k <= i; k++){
                 if (k != j) {
-                    den *= this.points[j][0] - this.points[k][0];
+                    den *= this.points[j].x - this.points[k].x;
                 }
             }
             //считаем разделенную разность
-            tmp += this.points[j][1] / den;
+            tmp += this.points[j].y / den;
         }
         //домножаем разделенную разность на скобки (x-x[0])...(x-x[i-1])
-        for(k=0; k < i; k++) {
-            tmp *= x - this.points[k][0];
+        for(k = 0; k < i; k++) {
+            tmp *= x - this.points[k].x;
         }
         //полином
-        result+=tmp;
+        result += tmp;
     }
     return result;
 }
@@ -45,10 +45,10 @@ NewtonPoly.prototype.fillTable = function(table) {
     for (var i = 0, len = this.points.length; i < len; i++) {
         tr = document.createElement("tr");
 
-        tr.innerHTML = "<td>" + this.points[i][0].toFixed(6) + "</td>" +
-            "<td>" + this.f(this.points[i][0]).toFixed(6) + "</td>" +
-            "<td>" + this.getNewtonPoly(this.points[i][0]).toFixed(6) + "</td>" +
-            "<td>" + (this.f(this.points[i][0]) - this.getNewtonPoly(this.points[i][0])).toFixed(6) + "</td>";
+        tr.innerHTML = "<td>" + this.points[i]["x"].toFixed(6) + "</td>" +
+            "<td>" + this.f(this.points[i]["x"]).toFixed(6) + "</td>" +
+            "<td>" + this.getNewtonPoly(this.points[i]["x"]).toFixed(6) + "</td>" +
+            "<td>" + (this.f(this.points[i]["x"]) - this.getNewtonPoly(this.points[i]["x"])).toFixed(6) + "</td>";
 
         table.appendChild(tr);
     }

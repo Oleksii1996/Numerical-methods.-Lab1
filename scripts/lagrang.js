@@ -17,10 +17,10 @@ LagrPoly.prototype.getLagrPoly = function(x) {
         tmp = 1;
         for (var j = 0; j < len; j++) {
             if (i != j) {
-                tmp *= (x - this.points[j][0]) / (this.points[i][0] - this.points[j][0]);
+                tmp *= (x - this.points[j].x) / (this.points[i].x - this.points[j].x);
             }
         }
-        result += this.points[i][1] * tmp;
+        result += this.points[i].y * tmp;
     }
 
     return result;
@@ -36,10 +36,10 @@ LagrPoly.prototype.fillTable = function(table) {
     for (var i = 0, len = this.points.length; i < len; i++) {
         tr = document.createElement("tr");
 
-        tr.innerHTML = "<td>" + this.points[i][0].toFixed(6) + "</td>" +
-            "<td>" + this.f(this.points[i][0]).toFixed(6) + "</td>" +
-            "<td>" + this.getLagrPoly(this.points[i][0]).toFixed(6) + "</td>" +
-            "<td>" + (this.f(this.points[i][0]) - this.getLagrPoly(this.points[i][0])).toFixed(6) + "</td>";
+        tr.innerHTML = "<td>" + this.points[i]["x"].toFixed(6) + "</td>" +
+            "<td>" + this.f(this.points[i]["x"]).toFixed(6) + "</td>" +
+            "<td>" + this.getLagrPoly(this.points[i]["x"]).toFixed(6) + "</td>" +
+            "<td>" + (this.f(this.points[i]["x"]) - this.getLagrPoly(this.points[i]["x"])).toFixed(6) + "</td>";
 
         table.appendChild(tr);
     }
