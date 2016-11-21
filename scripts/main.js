@@ -4,13 +4,13 @@
     var rms = new RMS(1.1, 5, 7, 7);
 
     // рисуем графики
-    var drawChart = function(lagr, newton, /*rms,*/ canvas) {
+    var drawChart = function(lagr, newton, rms, canvas) {
         google.charts.load("current", {packages:['corechart']});
         google.charts.setOnLoadCallback(drawC);
 
         var arr = [];
         for (var i = 0, len = lagr.x.length; i < len; i++) {
-            arr.push([lagr.x[i], lagr.f(lagr.x[i]), lagr.getLagrPoly(lagr.x[i]), newton.getNewtonPoly(newton.x[i])/*, rms.getRms(rms.x[i])*/]);
+            arr.push([lagr.x[i], lagr.f(lagr.x[i]), lagr.getLagrPoly(lagr.x[i]), newton.getNewtonPoly(newton.x[i]), rms.getRms(rms.x[i])]);
         }
         //arr.push([10, lagr.f(10), lagr.getLagrPoly(10), newton.getNewtonPoly(10)]);
 
@@ -21,7 +21,7 @@
             data.addColumn("number", "f(x)");
             data.addColumn("number", "Lagrang");
             data.addColumn("number", "Newton");
-            //data.addColumn("number", "Rms");
+            data.addColumn("number", "Rms");
 
             data.addRows(arr);
 
@@ -31,7 +31,7 @@
                     0: "f(x)",
                     1: "Полином Лагранжа",
                     2: "Полином Ньютона",
-                    //3: "Среднеквадратическое"
+                    3: "Среднеквадратическое"
                 },
                 width: "100%",
                 height: 400
@@ -46,12 +46,12 @@
         document.getElementById("leftForm").style.visibility = "visible";
         lagr.fillTable(document.getElementById("lagrTable"));
         newton.fillTable(document.getElementById("newtonTable"));
-        //rms.fillTable(document.getElementById("rmsTable"));
+        rms.fillTable(document.getElementById("rmsTable"));
     });
 
     document.getElementById("drawChartBtn").addEventListener("click", function() {
         document.getElementById("rightForm").style.visibility = "visible";
-        drawChart(lagr, newton, /*rms,*/ document.getElementById("forChart"));
+        drawChart(lagr, newton, rms, document.getElementById("forChart"));
     });
 
 })();

@@ -17,19 +17,22 @@ function BasicData(a, b, n) {
     // подсчет узлов интерполирования, tmpX - хранит абсциссу каждой подсчитываемой точки
     var tmpX = this.a;
 
-    this.points[0] = [];
-    this.points[0].x = this.a;
-    this.points[0].y = this.f(this.a);
+    this.points[0] = {
+        x: this.a,
+        y: this.f(this.a)
+    };
 
-    this.points[this.n] = [];
-    this.points[this.n].x = this.b;
-    this.points[this.n].y = this.f(this.b);
+    this.points[this.n] = {
+        x: this.b,
+        y: this.f(this.b)
+    };
 
     for (var i = 1; i < this.n; i++) {
         tmpX += this.h;
-        this.points[i] = [];
-        this.points[i].x = tmpX;
-        this.points[i].y = this.f(tmpX);
+        this.points[i] = {
+            x: tmpX,
+            y: this.f(tmpX)
+        };
     }
 
     for (i = 0; i <= this.n+1; i++) {

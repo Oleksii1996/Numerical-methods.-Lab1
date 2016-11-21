@@ -6,7 +6,7 @@ function RMS(a, b, n, m) {
 		this.m = m;
 	}
 
-	BasicData.apply(this, arguments);
+	BasicData.call(this, a, b, n);
 }
 
 RMS.prototype = Object.create(BasicData.prototype);
@@ -14,23 +14,24 @@ RMS.prototype.constructor = RMS;
 
 // нахождение наилучшего среднеквадратического отклонения
 RMS.prototype.getRms = function(x) {
-	var c = [], d = [], i = 0, j = 0, coefs, res = 0;
+	var c = [], d = [], coefs, res = 0;
 
-	debugger;
-	for (i = 0; i < this.m; i++) {
-		c[i] = [];
-		for (j = 0; j < this.n; j++) {
-			c[i][j] += Math.pow(this.points[j].x, i);
-		}
-	}
-
-	console.log(c);
-
-	for (i = 0; i < this.m; i++) {
-		for (j = 0; j < this.n; j++) {
-			d[i] += this.f(this.points[j].x) * Math.pow(this.points[j].x, i);
-		}
-	}
+	for (var k = 0; k < this.m; k++) {
+        c[k] = [];
+        for (var j = 0; j < this.m; j++) {
+            c[k][j] = 0;
+            for (var i = 0; i <= this.n; i++) {
+                c[k][j] += Math.pow(this.points[i].x, k+j);
+            }
+        }
+    }
+    
+    for (k = 0; k < this.m; k++) {
+        d[k] = 0;
+        for (i = 0; i <= this.n; i++) {
+            d[k] += this.f(this.points[i].x) * Math.pow(this.points[i].x, k);
+        }
+    }
 
 	coefs = this.solveSystem(c, d);
 
